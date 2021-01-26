@@ -39,7 +39,8 @@ def main():
     actionName = "hello-c"
     params = ""
 
-    r = os.popen("docker stop `docker ps | grep %s | awk {'print $1'}`" %containerName)
+    #r = os.popen("docker stop `docker ps | grep %s | awk {'print $1'}`" %containerName)
+    r = os.popen("kubectl delete pods -l=openwhisk/action=hello-c -n openwhisk")
     r.read()
 
     # First: warm up

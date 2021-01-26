@@ -137,7 +137,8 @@ for i in $(seq 1 $TIMES)
 do
     if [[ $MODE = 'cold' ]]; then
         echo 'Stop the running container..'
-        docker stop `docker ps | grep $CONTAINERNAME | awk {'print $1'}`
+        # docker stop `docker ps | grep $CONTAINERNAME | awk {'print $1'}`
+        kubectl delete pods -l=openwhisk/action=hello-c -n openwhisk
     fi
 
     echo Measure $MODE start up time: no.$i
